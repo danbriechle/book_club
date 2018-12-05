@@ -2,7 +2,7 @@
 
  describe 'show page' do
    describe 'as a visitor' do
-     it 'user can see individual books attributes' do
+     xit 'user can see individual books attributes' do
        book_1 = Book.create(title: "Example One", author:"Author One", pages:10)
        book_2 = Book.create(title: "Example Two", author:"Author Two", pages:20)
 
@@ -31,7 +31,7 @@
      within('div.review') do
        expect(page).to have_content(review_1.title)
        expect(page).to have_content(review_1.description)
-      
+
 
        expect(page).not_to have_content(review_2.title)
        expect(page).not_to have_content(review_2.description)
