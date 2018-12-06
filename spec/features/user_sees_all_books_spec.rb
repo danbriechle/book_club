@@ -42,7 +42,7 @@ describe 'user index' do
      click_on 'Books'
      expect(current_path).to eq('/books')
     end
- end
+
     it 'user can click title links to show page' do
       book_1 = Book.create(title: "dans amazing book", pages: 4, year: 2012, image_url: "place")
       book_2 = Book.create(title: "daves amazing book", pages: 5, year:2016, image_url: "otherplace")
@@ -64,7 +64,7 @@ describe 'user index' do
      expect(page).not_to have_content("#{author_2.name}")
      expect(page).not_to have_content("#{book_2.pages}")
    end
-   it 'user can click author links to show page' do
+    it 'user can click author links to show page' do
      book_1 = Book.create(title: "dans amazing book", pages: 4, year: 2012, image_url: "place")
      book_2 = Book.create(title: "daves amazing book", pages: 5, year:2016, image_url: "otherplace")
      author_1 = book_1.authors.create(name: "Author One")
@@ -87,7 +87,6 @@ describe 'user index' do
      expect(page).not_to have_content("#{book_2.pages}")
    end
 
-
-
-
+   
+end
 end
