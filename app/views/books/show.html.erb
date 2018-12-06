@@ -3,15 +3,38 @@
   <% @book.authors.each do |author| %>
   <p>Author: <%= author.name %></p>
   <% end %>
-  <p>Length: <%= @book.pages %></p>
+  <p>Length: <%= @book.pages %> Pages</p>
 </div>
+<h1> Reviews </h1>
 
 <div class="review">
   <% if !@book.reviews.empty? %>
     <% @book.reviews.each do |review| %>
-      <p><%= review.title %></p>
-      <p>Author:<%= review.description %></p>
-      <p>Length:<%= review.score %></p>
+      <p>Title:<%= review.title %></p>
+      <p>Description:<%= review.description %></p>
+      <p>Score:<%= review.score %> Stars</p><br><br>
     <% end %>
   <% end %>
+</div>
+
+<div class='book_stats'>
+  <p>Top Three</p>
+  <div class='top_three'><% @top_three_reviews.each do |review| %>
+  <%= review.title %>
+  <%= review.description %>
+  <%= review.score %><br><br>
+  <% end %>
+</div>
+
+  <div class='bottom_three'><p>Bottom Three</p>
+  <% @bottom_three_reviews.each do |review| %>
+  <%= review.title %>
+  <%= review.description %>
+  <%= review.score %><br><br>
+  <% end %>
+</div>
+
+  <div class='avg_score'>
+  <p>Average Score: <%= @average_score %></p>
+ </div>
 </div>

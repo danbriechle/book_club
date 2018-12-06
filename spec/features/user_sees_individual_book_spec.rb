@@ -46,4 +46,68 @@
 
     end
 
+    it 'user can see top three reviews' do
+      book_1 = Book.create(title: "dans amazing book", pages: 4, year: 2012, image_url: "place")
+      book_2 = Book.create(title: "daves amazing book", pages: 5, year:2016, image_url: "otherplace")
+
+      author_1 = book_1.authors.create(name: "Author One")
+      author_2 = book_2.authors.create(name: "Author Two")
+
+
+      review_1 = book_1.reviews.create(title: "Good Review", description: "This book is great!", score:5 )
+      review_2 = book_2.reviews.create(title: "Bad Review", description: "This book is horrible!", score:2)
+      review_3 = book_1.reviews.create(title: "YES!!", description: "Heart Emoji", score:4 )
+      review_4 = book_1.reviews.create(title: "Ugh..", description: "WORST EVER!", score:1)
+      review_5 = book_1.reviews.create(title: "Eh.", description: "Meh", score:2)
+
+      visit book_path(book_1)
+
+      within ".top_three" do
+        expect(page).not_to have_content(review_4.title)
+      end
+    end
+
+    it 'user can see bottom three reviews' do
+      book_1 = Book.create(title: "dans amazing book", pages: 4, year: 2012, image_url: "place")
+      book_2 = Book.create(title: "daves amazing book", pages: 5, year:2016, image_url: "otherplace")
+
+      author_1 = book_1.authors.create(name: "Author One")
+      author_2 = book_2.authors.create(name: "Author Two")
+
+
+      review_1 = book_1.reviews.create(title: "Good Review", description: "This book is great!", score:5 )
+      review_2 = book_2.reviews.create(title: "Bad Review", description: "This book is horrible!", score:2)
+      review_3 = book_1.reviews.create(title: "YES!!", description: "Heart Emoji", score:4 )
+      review_4 = book_1.reviews.create(title: "Ugh..", description: "WORST EVER!", score:1)
+      review_5 = book_1.reviews.create(title: "Eh.", description: "Meh", score:2)
+
+      visit book_path(book_1)
+
+      within ".bottom_three" do
+        expect(page).not_to have_content(review_1.title)
+      end
+    end
+
+
+    it 'user can see average score' do
+      book_1 = Book.create(title: "dans amazing book", pages: 4, year: 2012, image_url: "place")
+      book_2 = Book.create(title: "daves amazing book", pages: 5, year:2016, image_url: "otherplace")
+
+      author_1 = book_1.authors.create(name: "Author One")
+      author_2 = book_2.authors.create(name: "Author Two")
+
+
+      review_1 = book_1.reviews.create(title: "Good Review", description: "This book is great!", score:5 )
+      review_2 = book_2.reviews.create(title: "Bad Review", description: "This book is horrible!", score:2)
+      review_3 = book_1.reviews.create(title: "YES!!", description: "Heart Emoji", score:4 )
+      review_4 = book_1.reviews.create(title: "Ugh..", description: "WORST EVER!", score:1)
+      review_5 = book_1.reviews.create(title: "Eh.", description: "Meh", score:2)
+
+      visit book_path(book_1)
+      save_and_open_page
+      within ".avg_score" do
+        expect(page).to have_content("Average Score: 2.8")
+      end
+    end
+
   end
