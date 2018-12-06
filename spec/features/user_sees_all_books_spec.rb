@@ -129,6 +129,36 @@ describe 'user index' do
      expect(page).to have_content('Average Rating: 2')
    end
 
+   it 'shows sorting links' do
+
+   book_1 = Book.create(title: "dans amazing book", pages: 4, year: 2012, image_url: "place")
+   book_2 = Book.create(title: "daves amazing book", pages: 5, year:2016, image_url: "otherplace")
+   book_3 = Book.create(title: "johns amazing book", pages: 7, year: 2020, image_url: "sameplace")
+
+   book_1.authors.create(name: "Author One")
+   book_2.authors.create(name: "Author Two")
+   book_3.authors.create(name: "Author Three")
+
+   user_1 = User.create(name: "John")
+   user_2 = User.create(name: "Joe")
+
+   book_1.reviews.create(title: "Good Review", description: "This book is great!", score:5, user: user_1)
+   book_2.reviews.create(title: "Bad Review", description: "This book is horrible!", score:2, user: user_2)
+
+   visit books_path
+
+   expect(page).to have_link("Average Rating Ascending")
+   expect(page).to have_link("Average Rating Descending")
+   expect(page).to have_link("Average Number of Pages Ascending")
+   expect(page).to have_link("Average Number of Pages Descending")
+   expect(page).to have_link("Average Number of Reviews Ascending")
+   expect(page).to have_link("Average Number of Reviews Descending")
+
+   end
+
+
+
+
 
 end
 end

@@ -1,4 +1,14 @@
 
+<h1> Sort Books by </h1>
+  <p><%= link_to"Average Rating Ascending", books_path %></p>   # @average_score_asc
+  <p><%= link_to"Average Rating Descending", books_path %></p>   # @average_score_dsc
+  <p><%= link_to"Average Number of Pages Ascending", books_path %></p>   # @average_length_asc
+  <p><%= link_to"Average Number of Pages Descending", books_path %></p>   # @average_length_dsc
+  <p><%= link_to"Average Number of Reviews Ascending", books_path %></p>   # @average_reviews_asc
+  <p><%= link_to"Average Number of Reviews Descending", books_path %></p>   # @average_reviews_dsc
+
+
+
 <% @books.each do |book| %>
 <h1><%= link_to("#{book.title}", book_path(book)) %></h1>
    <% book.authors.each do |author| %>
