@@ -141,9 +141,7 @@
 
       visit book_path(book_1)
 
-
       click_on user_1.name
-
 
       expect(current_path).to eq("/users/#{user_1.id}")
 
