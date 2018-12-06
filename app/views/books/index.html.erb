@@ -5,4 +5,7 @@
 <p>Author: <%= link_to("#{author.name}", author_path(author.id)) %> </p>
    <% end %>
 <p> Length: <%= book.pages %> </p>
+<p> Average Rating: <%= book.reviews.average_score %></p>
+<p> Total Reviews: <%= book.reviews.count %></p>
+</div>
 <% end %>
