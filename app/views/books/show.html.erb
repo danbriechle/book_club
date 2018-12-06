@@ -1,15 +1,17 @@
 <div class="book">
   <h1>Title: <%= @book.title %></h1>
-  <p>Author: <%= @book.author %></p>
+  <% @book.authors.each do |author| %>
+  <p>Author: <%= author.name %></p>
+  <% end %>
   <p>Length: <%= @book.pages %></p>
 </div>
 
 <div class="review">
   <% if !@book.reviews.empty? %>
     <% @book.reviews.each do |review| %>
-      <p><%=review.title%></p>
-      <p>Author:<%=review.description%></p>
-      <p>Length:<%=review.score%></p>
+      <p><%= review.title %></p>
+      <p>Author:<%= review.description %></p>
+      <p>Length:<%= review.score %></p>
     <% end %>
   <% end %>
 </div>

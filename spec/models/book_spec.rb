@@ -5,7 +5,6 @@ describe Book, type: :model do
     it {should validate_presence_of(:title)}
     it {should validate_presence_of(:pages)}
     it {should validate_presence_of(:year)}
-    it {should validate_presence_of(:author)}
     it {should validate_presence_of(:image_url)}
   end
 
