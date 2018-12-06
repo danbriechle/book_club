@@ -26,11 +26,17 @@
       book_1 = Book.create(title: "dans amazing book", pages: 4, year: 2012, image_url: "place")
       book_2 = Book.create(title: "daves amazing book", pages: 5, year:2016, image_url: "otherplace")
       book_3 = Book.create(title: "johns amazing book", pages: 7, year: 2020, image_url: "sameplace")
+
       book_1.authors.create(name: "Author One")
       book_2.authors.create(name: "Author Two")
       book_3.authors.create(name: "Author Three")
-      review_1 = Review.create(title: "Good Review", description: "This book is great!", score:5, book: book_1 )
-      review_2 = Review.create(title: "Bad Review", description: "This book is horrible!", score:1, book: book_2)
+
+      user_1 = User.create(name: "John")
+      user_2 = User.create(name: "Joe")
+
+      review_1 = book_1.reviews.create(title: "Good Review", description: "This book is great!", score:5, user: user_1)
+      review_2 = book_2.reviews.create(title: "Bad Review", description: "This book is horrible!", score:2, user: user_2 )
+
 
      visit "books/#{book_1.id}"
 
@@ -50,15 +56,18 @@
       book_1 = Book.create(title: "dans amazing book", pages: 4, year: 2012, image_url: "place")
       book_2 = Book.create(title: "daves amazing book", pages: 5, year:2016, image_url: "otherplace")
 
-      author_1 = book_1.authors.create(name: "Author One")
-      author_2 = book_2.authors.create(name: "Author Two")
+      book_1.authors.create(name: "Author One")
+      book_2.authors.create(name: "Author Two")
+
+      user_1 = User.create(name: "John")
+      user_2 = User.create(name: "Joe")
 
 
-      review_1 = book_1.reviews.create(title: "Good Review", description: "This book is great!", score:5 )
-      review_2 = book_2.reviews.create(title: "Bad Review", description: "This book is horrible!", score:2)
-      review_3 = book_1.reviews.create(title: "YES!!", description: "Heart Emoji", score:4 )
-      review_4 = book_1.reviews.create(title: "Ugh..", description: "WORST EVER!", score:1)
-      review_5 = book_1.reviews.create(title: "Eh.", description: "Meh", score:2)
+      review_1 = book_1.reviews.create(title: "Good Review", description: "This book is great!", score:5, user: user_1)
+      review_2 = book_2.reviews.create(title: "Bad Review", description: "This book is horrible!", score:2, user: user_2)
+      review_3 = book_1.reviews.create(title: "YES!!", description: "Heart Emoji", score:4, user: user_1 )
+      review_4 = book_1.reviews.create(title: "Ugh..", description: "WORST EVER!", score:1, user: user_2)
+      review_5 = book_1.reviews.create(title: "Eh.", description: "Meh", score:2, user: user_1)
 
       visit book_path(book_1)
 
@@ -71,16 +80,19 @@
       book_1 = Book.create(title: "dans amazing book", pages: 4, year: 2012, image_url: "place")
       book_2 = Book.create(title: "daves amazing book", pages: 5, year:2016, image_url: "otherplace")
 
-      author_1 = book_1.authors.create(name: "Author One")
-      author_2 = book_2.authors.create(name: "Author Two")
+      book_1.authors.create(name: "Author One")
+      book_2.authors.create(name: "Author Two")
 
 
-      review_1 = book_1.reviews.create(title: "Good Review", description: "This book is great!", score:5 )
-      review_2 = book_2.reviews.create(title: "Bad Review", description: "This book is horrible!", score:2)
-      review_3 = book_1.reviews.create(title: "YES!!", description: "Heart Emoji", score:4 )
-      review_4 = book_1.reviews.create(title: "Ugh..", description: "WORST EVER!", score:1)
-      review_5 = book_1.reviews.create(title: "Eh.", description: "Meh", score:2)
+      user_1 = User.create(name: "John")
+      user_2 = User.create(name: "Joe")
 
+
+      review_1 = book_1.reviews.create(title: "Good Review", description: "This book is great!", score:5, user: user_1)
+      review_2 = book_2.reviews.create(title: "Bad Review", description: "This book is horrible!", score:2, user: user_2)
+      review_3 = book_1.reviews.create(title: "YES!!", description: "Heart Emoji", score:4, user: user_1 )
+      review_4 = book_1.reviews.create(title: "Ugh..", description: "WORST EVER!", score:1, user: user_2)
+      review_5 = book_1.reviews.create(title: "Eh.", description: "Meh", score:2, user: user_1)
       visit book_path(book_1)
 
       within ".bottom_three" do
@@ -97,17 +109,45 @@
       author_2 = book_2.authors.create(name: "Author Two")
 
 
-      review_1 = book_1.reviews.create(title: "Good Review", description: "This book is great!", score:5 )
-      review_2 = book_2.reviews.create(title: "Bad Review", description: "This book is horrible!", score:2)
-      review_3 = book_1.reviews.create(title: "YES!!", description: "Heart Emoji", score:4 )
-      review_4 = book_1.reviews.create(title: "Ugh..", description: "WORST EVER!", score:1)
-      review_5 = book_1.reviews.create(title: "Eh.", description: "Meh", score:2)
+      user_1 = User.create(name: "John")
+      user_2 = User.create(name: "Joe")
+
+
+      review_1 = book_1.reviews.create(title: "Good Review", description: "This book is great!", score:5, user: user_1)
+      review_2 = book_2.reviews.create(title: "Bad Review", description: "This book is horrible!", score:2, user: user_2)
+      review_3 = book_1.reviews.create(title: "YES!!", description: "Heart Emoji", score:4, user: user_1 )
+      review_4 = book_1.reviews.create(title: "Ugh..", description: "WORST EVER!", score:1, user: user_2)
+      review_5 = book_1.reviews.create(title: "Eh.", description: "Meh", score:2, user: user_1)
 
       visit book_path(book_1)
-      save_and_open_page
+
       within ".avg_score" do
         expect(page).to have_content("Average Score: 2.8")
       end
+    end
+
+    it 'users name is clickable to users show page' do
+      book_1 = Book.create(title: "dans amazing book", pages: 4, year: 2012, image_url: "place")
+      book_2 = Book.create(title: "daves amazing book", pages: 5, year:2016, image_url: "otherplace")
+
+      book_1.authors.create(name: "Author One")
+      book_2.authors.create(name: "Author Two")
+
+      user_1 = User.create(name: "John")
+      user_2 = User.create(name: "Joe")
+
+      book_1.reviews.create(title: "Bad Review", description: "This book is horrible!", score:2, user: user_1)
+      book_2.reviews.create(title: "Eh.", description: "Meh", score:2, user: user_2)
+
+      visit book_path(book_1)
+
+
+      click_on user_1.name
+
+
+      expect(current_path).to eq("/users/#{user_1.id}")
+
+
     end
 
   end
