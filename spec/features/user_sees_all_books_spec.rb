@@ -210,11 +210,22 @@ describe 'user index' do
 
      user_1 = User.create(name: "John")
      user_2 = User.create(name: "Joe")
+     user_3 = User.create(name: "Melvin")
+     user_4 = User.create(name: "Mr murp")
 
-     book_1.reviews.create(title: "Good Review", description: "This book is great!", score:5, user: user_1)
-     book_2.reviews.create(title: "Bad Review", description: "This book is horrible!", score:2, user: user_2)
-     book_3.reviews.create(title: "OK Review", description: "This book is ok", score:3, user: user_2)
-     book_4.reviews.create(title: "murp", description: "This book is murp", score:1, user: user_2)
+     book_1.reviews.create(title: "Good Review", description: "This book is great!", score: 1, user: user_1)
+     book_2.reviews.create(title: "Bad Review", description: "This book is horrible!", score: 2, user: user_1)
+     book_3.reviews.create(title: "OK Review", description: "This book is ok", score:3, user: user_1)
+     book_4.reviews.create(title: "murp", description: "This book is murp", score: 0, user: user_1,)
+     book_1.reviews.create(title: "Goo", description: "This book !", score:40, user: user_2)
+     book_2.reviews.create(title: "Good", description: "This book is goo!", score:20, user: user_2)
+     book_3.reviews.create(title: "Better", description: "This book is better!", score:50, user: user_2)
+     book_4.reviews.create(title: "Stuff", description: "This book is Words!", score: 5, user: user_3)
+     book_1.reviews.create(title: "Words", description: "Im saying things!", score:100, user: user_3)
+     book_2.reviews.create(title: "Talky", description: "Talky talky!", score:3000, user: user_3)
+     book_3.reviews.create(title: "Bleh", description: "This blarp!", score:4000, user: user_4)
+     book_4.reviews.create(title: "Try", description: "Try my online pharmicuticles", score:2, user: user_4)
+
 
 
      visit books_path
@@ -222,18 +233,31 @@ describe 'user index' do
 
      within('#highest') do
 
-     expect(page).to have_content("#{book_1.title} Score: #{book_1.reviews.average_score}")
-     expect(page).to have_content("#{book_3.title} Score: #{book_3.reviews.average_score}")
-     expect(page).to have_content("#{book_2.title} Score: #{book_2.reviews.average_score}")
+     expect(page).to have_content("#{book_1.title} Score: #{book_1.reviews.average_score.round}")
+     expect(page).to have_content("#{book_3.title} Score: #{book_3.reviews.average_score.round}")
+     expect(page).to have_content("#{book_2.title} Score: #{book_2.reviews.average_score.round}")
      end
 
      within('#worst') do
-       expect(page).to have_content("#{book_4.title} Score: #{book_4.reviews.average_score}")
-       expect(page).to have_content("#{book_3.title} Score: #{book_3.reviews.average_score}")
-       expect(page).to have_content("#{book_2.title} Score: #{book_2.reviews.average_score}")
+     expect(page).to have_content("#{book_4.title} Score: #{book_4.reviews.average_score.round}")
+     expect(page).to have_content("#{book_1.title} Score: #{book_1.reviews.average_score.round}")
+     expect(page).to have_content("#{book_2.title} Score: #{book_2.reviews.average_score.round}")
 
     end
+
+    within('#most_reviews') do
+    expect(page).to have_content(user_1.name)
+    expect(page).to have_content(user_1.reviews.count)
+    expect(page).to have_content(user_2.name)
+    expect(page).to have_content(user_2.reviews.count)
+    expect(page).to have_content(user_3.name)
+    expect(page).to have_content(user_3.reviews.count)
+
+    expect(page).not_to have_content(user_4.name)
   end
+end
+
+
 
 end
 end

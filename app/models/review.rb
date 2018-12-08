@@ -18,5 +18,9 @@ class Review < ApplicationRecord
     Review.average(:score)
   end
 
+  def self.top_reviews_count
+    Review.distinct.order(user_id: :asc).limit(3)
+  end
+
 
 end

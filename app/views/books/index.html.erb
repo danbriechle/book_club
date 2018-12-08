@@ -3,13 +3,21 @@
   <div id="highest">
     <h1>Highest Rated Books</h1>
       <% @top_books.each do |book| %>
-      <li><%= book.title %> Score: <%= book.reviews.average_score %></li>
+      <li><%= book.title %> Score: <%= book.reviews.average_score.round %></li>
       <% end %>
   </div>
+
   <div id="worst">
     <h1> Worst Books </h1>
-      <% @worst_books.each do |book|%>
-      <li><%= book.title %> Score: <%= book.reviews.average_score %></li>
+      <% @worst_books.each do |book| %>
+      <li><%= book.title %> Score: <%= book.reviews.average_score.round %></li>
+      <% end %>
+  </div>
+
+  <div id="most_reviews">
+   <h1> Most Reviews </h1>
+      <% @most.each do |user| %>
+      <li><%= user.name %> <%= user.reviews.count %> </li>
       <% end %>
   </div>
 </ul>
@@ -23,14 +31,14 @@
   <p><%= link_to"Average Number of Reviews Ascending", books_path %></p>   # @average_reviews_asc
   <p><%= link_to"Average Number of Reviews Descending", books_path %></p>   # @average_reviews_dsc
 
-<div class="all_books">
-    <% @books.each do |book| %>
-    <h1><%= link_to("#{book.title}", book_path(book)) %></h1>
-         <% book.authors.each do |author| %>
-         <p>Author: <%= link_to("#{author.name}", author_path(author.id)) %> </p>
-          <% end %>
-    <p> Length: <%= book.pages %> </p>
-    <p> Average Rating: <%= book.reviews.average_score %></p>
-    <p> Total Reviews: <%= book.reviews.count %></p>
-    <% end %>
-</div>
+  <div class="all_books">
+      <% @books.each do |book| %>
+      <h1><%= link_to("#{book.title}", book_path(book)) %></h1>
+           <% book.authors.each do |author| %>
+           <p>Author: <%= link_to("#{author.name}", author_path(author.id)) %> </p>
+            <% end %>
+      <p> Length: <%= book.pages %> </p>
+      <p> Average Rating: <%= book.reviews.average_score%></p>
+      <p> Total Reviews: <%= book.reviews.count %></p>
+      <% end %>
+  </div>
