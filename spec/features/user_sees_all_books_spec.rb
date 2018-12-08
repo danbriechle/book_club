@@ -197,15 +197,16 @@ describe 'user index' do
 
     end
 
-
     it 'shows book stats' do
-     book_1 = Book.create(title: "dans amazing book", pages: 4, year: 2012, image_url: "place")
-     book_2 = Book.create(title: "daves amazing book", pages: 5, year:2016, image_url: "otherplace")
-     book_3 = Book.create(title: "johns amazing book", pages: 7, year: 2020, image_url: "sameplace")
+     book_1 = Book.create(title: "dans amazing book", pages: 450, year: 2012, image_url: "place")
+     book_2 = Book.create(title: "daves amazing book", pages: 56, year:2016, image_url: "otherplace")
+     book_3 = Book.create(title: "johns amazing book", pages: 70, year: 2020, image_url: "sameplace")
+     book_4 = Book.create(title: "johns soso book", pages: 10000, year: 2010, image_url: "sameplace")
 
      book_1.authors.create(name: "Author One")
      book_2.authors.create(name: "Author Two")
      book_3.authors.create(name: "Author Three")
+     book_4.authors.create(name: "Author Four")
 
      user_1 = User.create(name: "John")
      user_2 = User.create(name: "Joe")
@@ -213,19 +214,26 @@ describe 'user index' do
      book_1.reviews.create(title: "Good Review", description: "This book is great!", score:5, user: user_1)
      book_2.reviews.create(title: "Bad Review", description: "This book is horrible!", score:2, user: user_2)
      book_3.reviews.create(title: "OK Review", description: "This book is ok", score:3, user: user_2)
+     book_4.reviews.create(title: "murp", description: "This book is murp", score:1, user: user_2)
 
 
      visit books_path
      save_and_open_page
 
-     within('.stats') do
+     within('#highest') do
 
      expect(page).to have_content("#{book_1.title} Score: #{book_1.reviews.average_score}")
      expect(page).to have_content("#{book_3.title} Score: #{book_3.reviews.average_score}")
      expect(page).to have_content("#{book_2.title} Score: #{book_2.reviews.average_score}")
      end
 
+     within('#worst') do
+       expect(page).to have_content("#{book_4.title} Score: #{book_4.reviews.average_score}")
+       expect(page).to have_content("#{book_3.title} Score: #{book_3.reviews.average_score}")
+       expect(page).to have_content("#{book_2.title} Score: #{book_2.reviews.average_score}")
+
     end
+  end
 
 end
 end
