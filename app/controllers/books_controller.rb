@@ -15,4 +15,8 @@ class BooksController < ApplicationController
     @average_score = Review.average_score
   end
 
+  def new
+    @book = Book.new
+  end 
+
 end
