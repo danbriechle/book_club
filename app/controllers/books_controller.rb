@@ -2,7 +2,8 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all
-    
+    @top_three_book_id = Review.top_three.pluck(:book_id)
+    @top_books = @books.find([@top_three_book_id])
   end
 
   def show
