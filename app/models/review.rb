@@ -17,4 +17,6 @@ class Review < ApplicationRecord
   def self.average_score
     Review.average(:score)
   end
+
+
 end
