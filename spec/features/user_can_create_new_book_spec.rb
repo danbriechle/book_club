@@ -5,7 +5,9 @@
 #       it 'can create a new book from a form' do
 #
 #
-#         author = Author.create(name: "Jean Wilder")
+#
+#         author = Author.create(name: "John")
+#
 #
 #
 #         visit new_book_path

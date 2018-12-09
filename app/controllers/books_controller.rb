@@ -14,9 +14,19 @@ class BooksController < ApplicationController
     @bottom_three_reviews = Review.bottom_three
     @average_score = Review.average_score
   end
+  
+  # def new
+  #   @book = Book.new
 
-  def new
-    @book = Book.new
-  end 
+  # end
+  #
+  # def create
+  #   @book = author.books.create(book_params)
+  # end
 
+  private
+
+  def book_params
+    params.require(:book).permit(:title, :year, :pages, :authors, :image_url)
+  end
 end

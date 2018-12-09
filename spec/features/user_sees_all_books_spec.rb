@@ -252,10 +252,6 @@ describe 'user index' do
 
       visit books_path
 
-      # click_on "Create A New Book"
-
-
-
       within('navbar') do
         expect(page).to have_link("Create A New Book", :href => "/books/new")
       end
