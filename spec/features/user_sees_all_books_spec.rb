@@ -229,13 +229,14 @@ describe 'user index' do
 
 
      visit books_path
-     save_and_open_page
+
 
      within('#highest') do
 
      expect(page).to have_content("#{book_1.title} Score: #{book_1.reviews.average_score.round}")
      expect(page).to have_content("#{book_3.title} Score: #{book_3.reviews.average_score.round}")
      expect(page).to have_content("#{book_2.title} Score: #{book_2.reviews.average_score.round}")
+
      end
 
      within('#worst') do
@@ -243,7 +244,33 @@ describe 'user index' do
      expect(page).to have_content("#{book_1.title} Score: #{book_1.reviews.average_score.round}")
      expect(page).to have_content("#{book_2.title} Score: #{book_2.reviews.average_score.round}")
 
+      end
     end
+
+    it 'shows a link to create a new book' do
+      book_1 = Book.create(title: "dans amazing book", pages: 4, year: 2012, image_url: "place")
+      book_2 = Book.create(title: "daves amazing book", pages: 5, year:2016, image_url: "otherplace")
+      book_3 = Book.create(title: "johns amazing book", pages: 7, year: 2020, image_url: "sameplace")
+
+      book_1.authors.create(name: "Author One")
+      book_2.authors.create(name: "Author Two")
+      book_3.authors.create(name: "Author Three")
+
+      user_1 = User.create(name: "John")
+      user_2 = User.create(name: "Joe")
+
+      book_1.reviews.create(title: "Good Review", description: "This book is great!", score:5, user: user_1)
+      book_2.reviews.create(title: "Bad Review", description: "This book is horrible!", score:2, user: user_2)
+
+      visit books_path
+
+      within('navbar') do
+        expect(page).to have_link("Create A New Book", :href => "/books/new")
+      end
+
+      click_on "Create A New Book"
+      expect(current_path).to eq(new_book_path)
+ 
 
     within('#most_reviews') do
     expect(page).to have_content(user_1.name)
@@ -254,10 +281,8 @@ describe 'user index' do
     expect(page).to have_content(user_3.reviews.count)
 
     expect(page).not_to have_content(user_4.name)
+
   end
 end
 
-
-
-end
 end
