@@ -122,7 +122,7 @@
       visit book_path(book_1)
 
       within ".avg_score" do
-        expect(page).to have_content("Average Score: 2.8")
+        expect(page).to have_content("Average Score: 3.0")
       end
     end
 
