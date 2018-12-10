@@ -4,6 +4,17 @@ class ReviewsController < ApplicationController
     @book = Book.find(params[:book_id])
   end
 
+  def show
+    @review = Review.find(params[:id])
+  end
+
+  def destroy
+    @review = Review.find(params[:id])
+    user_id = @review.user_id
+    @review.destroy
+    redirect_to user_path(user_id)
+  end
+
   def create
     book = Book.find(params[:book_id])
       if User.find_by(name: params[:review][:user]) == nil
@@ -24,9 +35,6 @@ class ReviewsController < ApplicationController
     rp = params.require(:review).permit(:title, :description, :score, :user)
     {title: rp[:title], description: rp[:description], score: rp[:score]}
   end
-
-
-
 
 
 end

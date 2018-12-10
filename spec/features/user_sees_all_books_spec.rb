@@ -333,3 +333,4 @@ describe 'user index' do
 
   end
 end
+
