@@ -10,9 +10,11 @@
 
   <body>
     <navbar>
-      <a href="/">Home</a>
-      <a href="/books">Books</a>
-      <a href="/books/new">Create A New Book</a>
+      <p><%= link_to("Home","/") %></p>
+      <p><%= link_to("Books",books_path) %></p>
+      <p><%= link_to("Create A New Book",new_book_path(@book)) %></p>
+
+
     </navbar>
     <%= yield %>
   </body>

@@ -227,22 +227,34 @@ describe 'user index' do
      book_4.reviews.create(title: "Try", description: "Try my online pharmicuticles", score:2, user: user_4)
 
 
-
      visit books_path
 
 
      within('#highest') do
 
-     expect(page).to have_content("#{book_1.title} Score: #{book_1.reviews.average_score.round}")
-     expect(page).to have_content("#{book_3.title} Score: #{book_3.reviews.average_score.round}")
-     expect(page).to have_content("#{book_2.title} Score: #{book_2.reviews.average_score.round}")
+       expect(page).to have_content("#{book_1.title} Score: #{book_1.reviews.average_score.round}")
+       expect(page).to have_content("#{book_3.title} Score: #{book_3.reviews.average_score.round}")
+       expect(page).to have_content("#{book_2.title} Score: #{book_2.reviews.average_score.round}")
 
      end
 
-     within('#worst') do
-     expect(page).to have_content("#{book_4.title} Score: #{book_4.reviews.average_score.round}")
-     expect(page).to have_content("#{book_1.title} Score: #{book_1.reviews.average_score.round}")
-     expect(page).to have_content("#{book_2.title} Score: #{book_2.reviews.average_score.round}")
+       within('#worst') do
+       expect(page).to have_content("#{book_4.title} Score: #{book_4.reviews.average_score.round}")
+       expect(page).to have_content("#{book_1.title} Score: #{book_1.reviews.average_score.round}")
+       expect(page).to have_content("#{book_2.title} Score: #{book_2.reviews.average_score.round}")
+
+     end
+
+       within('#most_reviews') do
+       expect(page).to have_content(user_1.name)
+       expect(page).to have_content(user_1.reviews.count)
+       expect(page).to have_content(user_2.name)
+       expect(page).to have_content(user_2.reviews.count)
+       expect(page).to have_content(user_3.name)
+       expect(page).to have_content(user_3.reviews.count)
+
+       expect(page).not_to have_content(user_4.name)
+
 
       end
     end
@@ -269,20 +281,51 @@ describe 'user index' do
       end
 
       click_on "Create A New Book"
+
+    end
+
+    it 'can create a new book' do
+      book_1 = Book.create(title: "dans amazing book", pages: 4, year: 2012, image_url: "place")
+      book_2 = Book.create(title: "daves amazing book", pages: 5, year:2016, image_url: "otherplace")
+      book_3 = Book.create(title: "johns amazing book", pages: 7, year: 2020, image_url: "sameplace")
+
+      book_1.authors.create(name: "Author One")
+      book_2.authors.create(name: "Author Two")
+      book_3.authors.create(name: "Author Three")
+
+      user_1 = User.create(name: "John")
+      user_2 = User.create(name: "Joe")
+
+      book_1.reviews.create(title: "Good Review", description: "This book is great!", score:5, user: user_1)
+      book_2.reviews.create(title: "Bad Review", description: "This book is horrible!", score:2, user: user_2)
+
+      title = "book_title"
+      year = 1975
+      pages = 45
+      authors = "Dan Briechle, Davey Joe"
+      image_url = "string"
+
+      visit books_path
+      click_on "Create A New Book"
+
       expect(current_path).to eq(new_book_path)
- 
 
-    within('#most_reviews') do
-    expect(page).to have_content(user_1.name)
-    expect(page).to have_content(user_1.reviews.count)
-    expect(page).to have_content(user_2.name)
-    expect(page).to have_content(user_2.reviews.count)
-    expect(page).to have_content(user_3.name)
-    expect(page).to have_content(user_3.reviews.count)
+     fill_in :book_title, with: title
+     fill_in :book_year, with: year
+     fill_in :book_pages, with: pages
+     fill_in :book_authors, with: authors
+     fill_in :book_image_url, with: image_url
 
-    expect(page).not_to have_content(user_4.name)
+     click_on "Create Book"
+     new_book = Book.where(title: title)
+     expect(current_path).to eq(book_path(new_book.ids))
+
+     expect(page).to have_content(title)
+     expect(page).to have_content(authors.first)
+     expect(page).to have_content(authors.last)
+     expect(page).to have_content(pages)
+
+    end
 
   end
-end
-
 end
