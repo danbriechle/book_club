@@ -6,4 +6,5 @@
   <h2><%= review.title %></h2>
   <p>Rating: <%= review.score %> Stars</p>
   <p><%= review.description %></p><br>
+  <%= button_to "Delete",review_path(review), method: :delete %>
 <% end %>

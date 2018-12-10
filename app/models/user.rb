@@ -8,5 +8,5 @@ class User < ApplicationRecord
 
   def self.sort_by_oldest_reviews
     Review.order(created_at: :asc)
-  end 
+  end
 end

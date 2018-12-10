@@ -22,5 +22,9 @@ class Review < ApplicationRecord
     Review.distinct.order(user_id: :asc).limit(3)
   end
 
+  def self.top_review
+    Review.order(score: :desc).limit(1).first
+  end
+
 
 end
