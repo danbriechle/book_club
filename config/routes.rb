@@ -3,12 +3,14 @@ Rails.application.routes.draw do
 
   get '/', to: 'books#index'
 
-  resources :books, only:[:index, :show, :new, :create, :destroy]
+  resources :books, only:[:index, :show, :new, :create, :destroy] do
+    resources :reviews, only:[:new, :create]
+  end
+
 
   resources :authors, only:[:show]
 
   resources :users, only:[:show]
-
+  
   resources :reviews, only:[:destroy]
-
 end

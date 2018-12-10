@@ -40,3 +40,7 @@
   <p>Average Score: <%= @average_score %></p>
  </div>
 </div>
+
+<div class='create_a_review'>
+  <p><%= link_to("Create Review", new_book_review_path(@book.id))%></p>
+</div>
