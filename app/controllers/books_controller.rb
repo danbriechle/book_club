@@ -34,12 +34,12 @@ class BooksController < ApplicationController
 
   def book_params
     retianed_params = params.require(:book).permit(:title, :year, :pages, :image_url, :authors)
-    {title: retianed_params[:title], year: retianed_params[:year], pages: retianed_params[:pages], image_url: retianed_params[:image_url]}
+    {title: retianed_params[:title].titlecase, year: retianed_params[:year], pages: retianed_params[:pages], image_url: retianed_params[:image_url]}
   end
 
   def author_params
     retianed_params = params.require(:book).permit(:authors)
-    {name: retianed_params[:authors]}
+    {name: retianed_params[:authors].titlecase}
   end
 
 

@@ -317,10 +317,14 @@ describe 'user index' do
      fill_in :book_image_url, with: image_url
 
      click_on "Create Book"
-     new_book = Book.where(title: title)
+     new_book = Book.where(title: title.titlecase)
+
+
+
      expect(current_path).to eq(book_path(new_book.ids))
 
-     expect(page).to have_content(title)
+
+     expect(page).to have_content(title.titlecase)
      expect(page).to have_content(authors.first)
      expect(page).to have_content(authors.last)
      expect(page).to have_content(pages)
