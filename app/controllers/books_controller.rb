@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
 
   def index
-    @books = Book.all
+    @books = Book.sort_by_average_rating
     @top_books = Book.get_by_reviews(:desc)
     @worst_books =  Book.get_by_reviews(:asc)
     most_reviews_id = Review.top_reviews_count.pluck(:user_id)
