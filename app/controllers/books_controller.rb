@@ -2,12 +2,11 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all
-    top_three_book_id = Review.top_three.pluck(:book_id)
-    @top_books = @books.find([top_three_book_id])
-    worst_book_id = Review.bottom_three.pluck(:book_id)
-    @worst_books = @books.find([worst_book_id])
+    @top_books = Book.get_by_reviews(:desc)
+    @worst_books =  Book.get_by_reviews(:asc)
     most_reviews_id = Review.top_reviews_count.pluck(:user_id)
     @most = User.find([most_reviews_id])
+
   end
 
   def show

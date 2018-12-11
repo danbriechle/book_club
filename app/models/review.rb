@@ -26,5 +26,9 @@ class Review < ApplicationRecord
     Review.order(score: :desc).limit(1).first
   end
 
+  # def self.users_with_most_reviews
+  #   joins(:users).order("users.id :asc").limit(3)
+  # end
+
 
 end
