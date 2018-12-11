@@ -2,10 +2,10 @@
 <h1><%= @author.name %> </h1>
 
 <% @author.books.each do |book| %>
-    <%= book.title %><br>
+    <%=link_to(book.title, book_path(book)) %><br>
     <%= book.year %><br>
     <%= book.pages %><br>
     <%= book.reviews.top_review.title %><br>
     <%= book.reviews.top_review.score %><br>
-    <%= book.reviews.top_review.user.name %><br>
+    <%= link_to(book.reviews.top_review.user.name, user_path(book.reviews.top_review.user)) %><br>
 <% end %>

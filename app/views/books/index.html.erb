@@ -3,14 +3,14 @@
   <div id="highest">
     <h1>Highest Rated Books</h1>
       <% @top_books.each do |book| %>
-      <li><%= book.title %> Score: <%= book.reviews.average_score.round %></li>
+      <li><%=link_to(book.title, book_path(book)) %> Score: <%= book.reviews.average_score.round %></li>
       <% end %>
   </div>
 
   <div id="worst">
     <h1> Worst Books </h1>
       <% @worst_books.each do |book| %>
-      <li><%= book.title %> Score: <%= book.reviews.average_score.round %></li>
+      <li><%=link_to(book.title, book_path(book)) %> Score: <%= book.reviews.average_score.round %></li>
       <% end %>
   </div>
 
