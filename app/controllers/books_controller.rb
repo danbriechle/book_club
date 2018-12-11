@@ -1,7 +1,23 @@
 class BooksController < ApplicationController
 
   def index
-    @books = Book.sort_by_average_rating
+    if params[:column] == 'rating' && params[:order] == 'asc'
+      @books = Book.sort_by_average_rating
+    elsif params[:column] == 'rating' && params[:order] == 'desc'
+      @books = Book.sort_by_average_rating(:desc)
+    elsif params[:column] == 'pages' && params[:order] == 'asc'
+      @books = Book.sort_by_book
+    elsif params[:column] == 'pages' && params[:order] == 'desc'
+      @books = Book.sort_by_book(:desc)
+    elsif params[:column] == 'reviews' && params[:order] == 'asc'
+      @books = Book.sort_by_total_scores
+    elsif params[:column] == 'reviews' && params[:order] == 'desc'
+      @books = Book.sort_by_total_scores(:desc)
+    else
+      @books = Book.all
+    end
+
+    
     @top_books = Book.get_by_reviews(:desc)
     @worst_books =  Book.get_by_reviews(:asc)
     @most = User.top_users_with_the_most_reviews

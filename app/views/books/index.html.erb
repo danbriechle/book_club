@@ -16,19 +16,19 @@
   <div id="most_reviews">
    <h1> Most Reviews </h1>
       <% @most.each do |user| %>
-      <li><%= user.name %> <%= user.reviews.count %> </li>
+      <li><%= link_to(user.name, user_path(user)) %> <%= user.reviews.count %> </li>
       <% end %>
   </div>
 </ul>
 
 <div class="Sortby">
 <h1> Sort Books by </h1>
-  <p><%= link_to"Average Rating Ascending", books_path %></p>
-  <p><%= link_to"Average Rating Descending", books_path %></p>
-  <p><%= link_to"Average Number of Pages Ascending", books_path %></p>
-  <p><%= link_to"Average Number of Pages Descending", books_path %></p>
-  <p><%= link_to"Average Number of Reviews Ascending", books_path %></p>
-  <p><%= link_to"Average Number of Reviews Descending", books_path %></p>
+  <p><%= link_to"Average Rating Ascending", books_path(column: 'rating', order: 'asc') %></p>
+  <p><%= link_to"Average Rating Descending", books_path(column: 'rating', order: 'desc') %></p>
+  <p><%= link_to"Average Number of Pages Ascending", books_path(column: 'pages', order: 'asc') %></p>
+  <p><%= link_to"Average Number of Pages Descending", books_path(column: 'pages', order: 'desc') %></p>
+  <p><%= link_to"Average Number of Reviews Ascending", books_path(column: 'reviews', order: 'asc') %></p>
+  <p><%= link_to"Average Number of Reviews Descending", books_path(column: 'reviews', order: 'desc') %></p>
 </div>
 
   <div class="all_books">
