@@ -30,7 +30,7 @@ require 'rails_helper'
 
         expect(current_path).to eq(book_path(book_1))
 
-        save_and_open_page
+      
       end
     end
   end

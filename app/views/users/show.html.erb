@@ -2,9 +2,11 @@
 <p><%= link_to"Newest Reviews", user_path %></p> # @new_reviews
 <p><%= link_to"Oldest Reviews", user_path %></p> # @old_reviews
 
+<div Class="users" id="User-<%="#{@user.name}"%>">
 <% @user.reviews.each do |review| %>
   <h2><%= review.title %></h2>
   <p>Rating: <%= review.score %> Stars</p>
   <p><%= review.description %></p><br>
   <%= button_to "Delete",review_path(review), method: :delete %>
 <% end %>
+</div>

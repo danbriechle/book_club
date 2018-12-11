@@ -31,10 +31,11 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    @book = Book.find(params[:id])
-    book_id = @book.id
-
-    @book.destroy
+    book_authors = BookAuthor.where(book_id: params[:id])
+    BookAuthor.delete(book_authors)
+    reviews = Review.where(book_id: params[:id])
+    Review.delete(reviews)
+    Book.delete(params[:id])
     redirect_to books_path
   end
 

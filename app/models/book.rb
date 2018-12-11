@@ -5,7 +5,7 @@ class Book < ApplicationRecord
   validates_presence_of :image_url
 
   has_many :reviews
-  has_many :book_authors
-  has_many :authors
+  has_many :book_authors, dependent: :destroy
+  has_many :authors, through: :book_authors
 
 end
