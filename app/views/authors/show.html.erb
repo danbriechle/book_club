@@ -1,13 +1,17 @@
 
-<h1><%= @author.name %> </h1>
+<div class='title'> <h1><%= @author.name %> </h1></div>
 
-<% @author.books.each do |book| %>
-    <%=link_to(book.title, book_path(book)) %><br>
-    <%= book.year %><br>
-    <%= book.pages %><br>
-    <%= book.reviews.top_review.title %><br>
-    <%= book.reviews.top_review.score %><br>
-    <%= link_to(book.reviews.top_review.user.name, user_path(book.reviews.top_review.user)) %><br>
-<% end %>
+<div class='author_info'>
+    <ul>
+    <% @author.books.each do |book| %>
+    <li><%=link_to(book.title, book_path(book)) %><br></li>
+    <li><%= book.year %><br></li>
+    <li><%= book.pages %><br></li>
+    <li><%= book.reviews.top_review.title %><br></li>
+    <li><%= book.reviews.top_review.score %><br></li>
+    <li><%= link_to(book.reviews.top_review.user.name, user_path(book.reviews.top_review.user)) %><br></li>
+    <% end %>
+  </ul>
+</div>
 
-<%= button_to "Delete", author_path(@author.id), method: :delete %>
+<div class='delete_button'> <%= button_to "Delete", author_path(@author.id), method: :delete %></div>
