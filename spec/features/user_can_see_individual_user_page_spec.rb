@@ -49,7 +49,7 @@ require 'rails_helper'
 
         visit user_path(user_1.id)
 
-        expect(page).to have_link('Newest Reviews', :href => "/users/#{user_1.id}")
+        expect(page).to have_link('Newest Reviews')
       end
 
       it 'can sort reviews in descending chronological order' do
@@ -70,7 +70,7 @@ require 'rails_helper'
 
         visit user_path(user_1.id)
 
-        expect(page).to have_link('Oldest Reviews', :href => "/users/#{user_1.id}")
+        expect(page).to have_link('Oldest Reviews')
       end
     end
 

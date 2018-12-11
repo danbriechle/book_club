@@ -21,8 +21,8 @@ require 'rails_helper'
         click_on 'Create Book'
 
         new_book = Book.last
-
-        expect(current_path).to eq(books_path)
+    
+        expect(current_path).to eq(book_path(new_book.id))
         expect(page).to have_content(new_book.title)
       end
     end

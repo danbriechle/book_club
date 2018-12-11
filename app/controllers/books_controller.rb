@@ -4,8 +4,7 @@ class BooksController < ApplicationController
     @books = Book.sort_by_average_rating
     @top_books = Book.get_by_reviews(:desc)
     @worst_books =  Book.get_by_reviews(:asc)
-    most_reviews_id = Review.top_reviews_count.pluck(:user_id)
-    @most = User.find([most_reviews_id])
+    @most = User.top_users_with_the_most_reviews
 
   end
 
@@ -17,7 +16,7 @@ class BooksController < ApplicationController
   end
 
   def new
-  @book = Book.new
+    @book = Book.new
   end
 
   def create
@@ -26,7 +25,7 @@ class BooksController < ApplicationController
     authors.each do |author|
       book.authors.create(name: author)
     end
-   redirect_to book_path(book.id)
+    redirect_to book_path(book.id)
   end
 
   def destroy
