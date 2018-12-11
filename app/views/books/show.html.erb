@@ -6,7 +6,9 @@
   <p>Length: <%= @book.pages %> Pages</p>
 </div>
   <%= button_to "Delete",book_path(@book.id), method: :delete %>
-<h1> Reviews </h1>
+
+
+<div class="reviews_title"><h1> Reviews </h1></div>
 
 <div class="review">
   <% if !@book.reviews.empty? %>
