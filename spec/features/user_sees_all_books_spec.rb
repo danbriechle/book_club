@@ -82,7 +82,9 @@ describe 'user index' do
 
      visit books_path
 
+     within '.all_books' do
      click_on(book_1.title)
+     end
 
 
      expect(current_path).to eq(book_path(book_1.id))
@@ -333,4 +335,3 @@ describe 'user index' do
 
   end
 end
-
