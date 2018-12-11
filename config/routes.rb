@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   end
 
 
-  resources :authors, only:[:show]
+  resources :authors, only:[:show, :destroy]
 
   resources :users, only:[:show]
-  
+
   resources :reviews, only:[:destroy]
 end

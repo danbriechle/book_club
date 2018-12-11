@@ -9,3 +9,5 @@
     <%= book.reviews.top_review.score %><br>
     <%= link_to(book.reviews.top_review.user.name, user_path(book.reviews.top_review.user)) %><br>
 <% end %>
+
+<%= button_to "Delete", author_path(@author.id), method: :delete %>
