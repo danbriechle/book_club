@@ -12,6 +12,27 @@ class Book < ApplicationRecord
    joins(:reviews).order("reviews.score #{order}").limit(3)
   end
 
+  def self.sort_by_book(order = :asc)
+    Book.order(pages: order)
+  end
+
+  def self.sort_by_average_rating(order = :asc)
+      Book.joins(:reviews)
+      .select("books.*, avg(reviews.score) as rating")
+      .order("rating #{order}")
+      .group(:id)
+  end
+
+  def self.sort_by_total_scores(order = :asc)
+      Book.joins(:reviews)
+      .select("books.*, count(reviews) as count ")
+      .order("count #{order}")
+      .group(:id)
+  end
+
+
+
+
 
 
 end

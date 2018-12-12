@@ -1,12 +1,9 @@
 <div class='title'><h1><%=@user.name %></h1></div>
-<div class='links'>
 <p><%= link_to"Newest Reviews", user_path(sort: 'desc') %></p>
 <p><%= link_to"Oldest Reviews", user_path(sort: 'asc') %></p>
-</div>
 
-<div class="users" id="User-<%="#{@user.name}"%>">
-<ul>
-<% @user.reviews.each do |review| %>
+<div Class="users" id="User-<%="#{@user.name}"%>">
+<% @reviews.each do |review| %>
   <li><h2><%= review.title %></h2></li>
   <li><p><%=link_to(review.book.title, book_path(review.book)) %></p></li>
   <li><p>Rating: <%= review.score %> Stars</p></li>

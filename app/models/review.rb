@@ -18,17 +18,8 @@ class Review < ApplicationRecord
     Review.average(:score)
   end
 
-  def self.top_reviews_count
-    Review.distinct.order(user_id: :asc).limit(3)
-  end
-
   def self.top_review
     Review.order(score: :desc).limit(1).first
   end
-
-  # def self.users_with_most_reviews
-  #   joins(:users).order("users.id :asc").limit(3)
-  # end
-
 
 end
