@@ -2,6 +2,16 @@
 <html>
 <head> <LINK rel="stylesheet" href="books_index.css"></head>
 
+  <div class="Sortby">
+    <h1> Sort Books by </h1>
+    <p><%= link_to"Average Rating Ascending", books_path(column: 'rating', order: 'asc') %></p>
+    <p><%= link_to"Average Rating Descending", books_path(column: 'rating', order: 'desc') %></p>
+    <p><%= link_to"Average Number of Pages Ascending", books_path(column: 'pages', order: 'asc') %></p>
+    <p><%= link_to"Average Number of Pages Descending", books_path(column: 'pages', order: 'desc') %></p>
+    <p><%= link_to"Average Number of Reviews Ascending", books_path(column: 'reviews', order: 'asc') %></p>
+    <p><%= link_to"Average Number of Reviews Descending", books_path(column: 'reviews', order: 'desc') %></p>
+  </div>
+  
 <ul class="stats">
   <div id="highest">
     <h1>Highest Rated Books</h1>
@@ -26,15 +36,6 @@
 </ul>
 
 
-<div class="Sortby">
-<h1> Sort Books by </h1>
-  <p><%= link_to"Average Rating Ascending", books_path(column: 'rating', order: 'asc') %></p>
-  <p><%= link_to"Average Rating Descending", books_path(column: 'rating', order: 'desc') %></p>
-  <p><%= link_to"Average Number of Pages Ascending", books_path(column: 'pages', order: 'asc') %></p>
-  <p><%= link_to"Average Number of Pages Descending", books_path(column: 'pages', order: 'desc') %></p>
-  <p><%= link_to"Average Number of Reviews Ascending", books_path(column: 'reviews', order: 'asc') %></p>
-  <p><%= link_to"Average Number of Reviews Descending", books_path(column: 'reviews', order: 'desc') %></p>
-</div>
 
   <div class="all_books">
       <% @books.each do |book| %>

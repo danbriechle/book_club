@@ -1,3 +1,12 @@
+
+li{
+  color: black;
+  font-size: 12;
+  font-weight:bold;
+  font-family: monospace;
+  list-style: none;
+
+}
 .title{
   color: red;
   font-size: 26;
@@ -14,16 +23,4 @@
   font-size: 15;
   font-weight:bold;
   font-family: monospace;
-}
-
-ul{
-
-}
-
-ul li{
-  color: black;
-  font-size: 12;
-  font-weight:bold;
-  font-family: monospace;
-
 }
