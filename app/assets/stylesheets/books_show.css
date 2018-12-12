@@ -1,0 +1,55 @@
+.book{
+  list-style: none;
+  font-family: monospace;
+  display: inline-block;
+  text-align: center;
+  color: blue;
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiFMeRHrKi9G9a5ZXE5d-QlC_Di3h55-U5kxPDevUkh7EqFpcH")
+}
+
+.book h1 p{
+
+}
+
+.reviews_title{
+  text-align: center;
+  color: pink;
+  font-size: 26;
+  font-family: monospace;
+}
+
+.review{
+  text-align: center;
+  color: blue;
+  font-size: 12;
+  font-family: monospace;
+
+}
+
+.review p{
+
+}
+
+.book_stats{
+  text-align: center;
+  color: blue;
+  font-size: 12;
+  font-family: monospace;
+
+}
+
+.book_stats .top_three{
+
+}
+
+.book_stats .bottom_three{
+
+}
+
+.book_stats .avg_score{
+
+}
+
+.create_a_review{
+
+}

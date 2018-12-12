@@ -1,3 +1,8 @@
+<html>
+<head>
+   <LINK rel="stylesheet" href="books_show.css" type="text/css"/>
+ </head>
+
 <div class="book">
   <h1>Title: <%= @book.title %></h1>
   <% @book.authors.each do |author| %>
@@ -46,3 +51,4 @@
 <div class='create_a_review'>
   <p><%= link_to("Create Review", new_book_review_path(@book.id))%></p>
 </div>
+</html>

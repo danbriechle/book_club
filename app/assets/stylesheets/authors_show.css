@@ -1,0 +1,27 @@
+.show_page{
+  display:inline-block;
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiFMeRHrKi9G9a5ZXE5d-QlC_Di3h55-U5kxPDevUkh7EqFpcH")
+
+}
+.title{
+color: blue;
+background-color: lavender;
+text-align: center;
+font-size: 35;
+font-family: monospace;
+font-weight: bold;
+}
+
+.title ul li{
+  text-align: center;
+  font-size: 35;
+  font-family: monospace;
+  font-weight: bold;
+
+
+}
+
+.delete_button{
+  border: 3px solid red;
+
+}

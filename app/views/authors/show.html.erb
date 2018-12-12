@@ -1,4 +1,7 @@
+<html>
+<head> <LINK rel="stylesheet" href="authors_show.css"> </head>
 
+<div class='show_page'>
 <div class='title'> <h1><%= @author.name %> </h1></div>
 
 <div class='author_info'>
@@ -15,3 +18,5 @@
 </div>
 
 <div class='delete_button'> <%= button_to "Delete", author_path(@author.id), method: :delete %></div>
+</div>
+</html>

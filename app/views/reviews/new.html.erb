@@ -1,12 +1,17 @@
-<h1>Create a Review</h1>
-<%= form_for [@book, @review] do |f| %>
-<%= f.label :title %>
-<%= f.text_field :title %>
-<%= f.label :description %>
-<%= f.text_field :description %>
-<%= f.label :score %>
-<%= f.text_field :score %>
-<%= f.label :user %>
-<%= f.text_field :user %>
-<%= f.submit %>
-<% end %>
+<div class='title'><h1>Create a Review</h1></div>
+<div class='form'><%= form_for [@book, @review] do |f| %>
+<div class='title_field'><%= f.label :title %>
+  <%= f.text_field :title %></div>
+
+<div class='description_field'><%= f.label :description %>
+  <%= f.text_field :description %></div>
+
+<div class='score_field'><%= f.label :score %>
+  <%= f.text_field :score %></div>
+
+<div class='user_field'><%= f.label :user %>
+  <%= f.text_field :user %></div>
+
+<div class='submit_button'><%= f.submit %></div>
+  <% end %>
+</div>

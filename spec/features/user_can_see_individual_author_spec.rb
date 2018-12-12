@@ -13,11 +13,10 @@ require 'rails_helper'
         review_2 = Review.create(title: "Terrible Book", description: "I did not like this!", score: 1, user: user_2, book: book_1)
 
         visit author_path(author_1.id)
-
+    
         expect(page).to have_content(book_1.title)
         expect(page).to have_content(book_1.pages)
         expect(page).to have_content(book_1.year)
-        #expect(page).to have_content(book_1.authors.)
         expect(page).to have_content(review_1.title)
         expect(page).to have_content(review_1.score)
         expect(page).to have_content(review_1.user.name)

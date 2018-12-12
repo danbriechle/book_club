@@ -1,22 +1,31 @@
+<html>
+<head>
+<LINK href="books_new.css" rel="stylesheet" type="text/css"/>
+</head>
 
-<div class='title'><h1> Create A New Book </h1></div>
-<div class='form'><%= form_for @book do |f| %>
+  <div class="title"><h1> Create A New Book </h1></div>
 
-    <div class='title_field'><%= f.label :title %>
-    <%= f.text_field :title %></div>
+    <div class="form">
+      <%= form_for @book do |f| %>
 
-    <div class='year_field'><%= f.label :year %>
-    <%= f.text_field :year %></div>
+      <div class="title_field"><%= f.label :title %>
+      <%= f.text_field :title %></div>
 
-    <div class='pages_field'><%= f.label :pages %>
-    <%= f.text_field :pages %></div>
+      <div class="year_field"><%= f.label :year %>
+      <%= f.text_field :year %></div>
 
-    <div class='authors_field'><%= f.label :authors %>
-    <%= f.text_field :authors, :value => "" %></div>
+      <div class="pages_field"><%= f.label :pages %>
+      <%= f.text_field :pages %></div>
 
-    <div class='img_url_field'><%= f.label :image_url %>
-    <%= f.text_field :image_url %></div>
+      <div class="authors_field"><%= f.label :authors %>
+      <%= f.text_field :authors, :value => "" %></div>
 
-    <div class='submit_button'><%= f.submit %></div>
-  <% end %>
-</div>
+      <div class="img_url_field"><%= f.label :image_url %>
+      <%= f.text_field :image_url %></div>
+
+      <div class="submit_button"><%= f.submit %></div>
+
+      <% end %>
+    </div>
+
+</html>
