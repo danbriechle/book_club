@@ -1,7 +1,7 @@
 <div class='title'><h1><%=@user.name %></h1></div>
 <div class='links'>
-<p><%= link_to"Newest Reviews", user_path %></p>
-<p><%= link_to"Oldest Reviews", user_path %></p>
+<p><%= link_to"Newest Reviews", user_path(sort: 'desc') %></p>
+<p><%= link_to"Oldest Reviews", user_path(sort: 'asc') %></p>
 </div>
 
 <div class="users" id="User-<%="#{@user.name}"%>">

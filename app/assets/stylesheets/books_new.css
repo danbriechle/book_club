@@ -1,0 +1,19 @@
+.title{
+  color:red;
+}
+.form {
+  text-shadow:1px 1px yellow;
+  font-weight: bold;
+  text-align: right;
+  background-image: url(https://scene360.com/wp-content/uploads/2015/07/mu-pan-05.jpg);
+  height: 100%;
+
+  background-repeat: no-repeat;
+  margin: 100px;
+  padding: 100px;
+  float: center;
+  border: none;
+  border:10px solid red;
+
+
+  }

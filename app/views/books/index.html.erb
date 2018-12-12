@@ -1,3 +1,15 @@
+<html>
+<head> <LINK rel="stylesheet" href="books_index.css"></head>
+
+<div class="Sortby">
+<h1> Sort Books by </h1>
+  <p><%= link_to"Average Rating Ascending", books_path %></p>
+  <p><%= link_to"Average Rating Descending", books_path %></p>
+  <p><%= link_to"Average Number of Pages Ascending", books_path %></p>
+  <p><%= link_to"Average Number of Pages Descending", books_path %></p>
+  <p><%= link_to"Average Number of Reviews Ascending", books_path %></p>
+  <p><%= link_to"Average Number of Reviews Descending", books_path %></p>
+</div>
 
 <ul class="stats">
   <div id="highest">
@@ -22,24 +34,17 @@
   </div>
 </ul>
 
-<div class="Sortby">
-<h1> Sort Books by </h1>
-  <p><%= link_to"Average Rating Ascending", books_path %></p>
-  <p><%= link_to"Average Rating Descending", books_path %></p>
-  <p><%= link_to"Average Number of Pages Ascending", books_path %></p>
-  <p><%= link_to"Average Number of Pages Descending", books_path %></p>
-  <p><%= link_to"Average Number of Reviews Ascending", books_path %></p>
-  <p><%= link_to"Average Number of Reviews Descending", books_path %></p>
-</div>
-
   <div class="all_books">
       <% @books.each do |book| %>
-      <h1><%= link_to("#{book.title}", book_path(book)) %></h1>
+      <div class='each_book'><h1><%= link_to("#{book.title}", book_path(book)) %></h1>
            <% book.authors.each do |author| %>
            <p>Author: <%= link_to("#{author.name}", author_path(author.id)) %> </p>
             <% end %>
       <p> Length: <%= book.pages %> </p>
       <p> Average Rating: <%= book.reviews.average_score%></p>
-      <p> Total Reviews: <%= book.reviews.count %></p>
+      <p> Total Reviews: <%= book.reviews.count %></p></div>
       <% end %>
   </div>
+
+
+</html>
